@@ -28,7 +28,7 @@
 </script>
 
 <body class="bg-gray-100 font-sans">
-    <div class="max-w-4xl mx-auto mt-10 p-8 bg-white shadow-lg rounded-lg">
+    <div id="cv-container" class="max-w-4xl mx-auto mt-10 p-8 bg-white shadow-lg rounded-lg">
         <!-- Sección de Presentación -->
         <div class="text-center">
             <img class="w-32 h-32 mx-auto rounded-full" src="https://i.postimg.cc/13Xx0Lf6/galgo.jpg" alt="Foto de perfil">
@@ -193,11 +193,11 @@
             <p class="mt-2 text-gray-700">Telefono/Whatsapp: <a href="#" class="text-blue-500">3121432958</a></p>
         </section>
 
-        <!-- Botón de descarga -->
-        <a href="/descargar_pdf" class="fixed bottom-5 right-5 bg-blue-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-700">
-            Descargar PDF
-            <button onclick="downloadPDF()">Descargar PDF</button>
-        </a>
+        <div class="text-center mt-6">
+            <button onclick="downloadPDF()" class="px-4 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600">
+                Descargar PDF
+            </button>
+        </div>
     </div>
 </body>
 </html>
