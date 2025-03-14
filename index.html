@@ -6,6 +6,27 @@
     <title>Mi CV Online</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+  function downloadPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF("p", "mm", "a4");
+
+    const cvElement = document.getElementById("cv-container"); // Asegúrate de que el ID coincida con tu contenedor
+
+    html2canvas(cvElement, { scale: 2 }).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
+      const imgWidth = 210; // Ancho en mm para A4
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      
+      doc.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
+      doc.save("Mi_CV.pdf");
+    });
+  }
+</script>
+
 <body class="bg-gray-100 font-sans">
     <div class="max-w-4xl mx-auto mt-10 p-8 bg-white shadow-lg rounded-lg">
         <!-- Sección de Presentación -->
@@ -175,6 +196,7 @@
         <!-- Botón de descarga -->
         <a href="/descargar_pdf" class="fixed bottom-5 right-5 bg-blue-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-700">
             Descargar PDF
+            <button onclick="downloadPDF()">Descargar PDF</button>
         </a>
     </div>
 </body>
