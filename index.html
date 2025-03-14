@@ -10,22 +10,30 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
-  function downloadPDF() {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF("p", "mm", "a4");
-
-    const cvElement = document.getElementById("cv-container"); // Asegúrate de que el ID coincida con tu contenedor
-
-    html2canvas(cvElement, { scale: 2 }).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const imgWidth = 210; // Ancho en mm para A4
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      
-      doc.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
-      doc.save("Mi_CV.pdf");
-    });
-  }
+    function downloadPDF() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF("p", "mm", "a4");
+        const cvElement = document.getElementById("cv-container");
+ 
+        html2canvas(cvElement, { scale: 2 }).then((canvas) => {
+            const imgData = canvas.toDataURL("image/png");
+            const imgWidth = 210;
+            const pageHeight = 297;
+            const imgHeight = (canvas.height * imgWidth) / canvas.width; 
+ 
+            let y = 0;
+            while (y < imgHeight) {
+                doc.addImage(imgData, "PNG", 0, -y, imgWidth, imgHeight);
+                y += pageHeight;
+                if (y < imgHeight) {
+                    doc.addPage();
+                }
+            }
+            doc.save("Mi_CV.pdf");
+        });
+    }
 </script>
+ 
 
 <body class="bg-gray-100 font-sans">
     <div id="cv-container" class="max-w-4xl mx-auto mt-10 p-8 bg-white shadow-lg rounded-lg">
