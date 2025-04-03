@@ -5,110 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi CV Online</title>
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF("p", "mm", "a4");
+            const cvElement = document.getElementById("cv-container");
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script>
-    function downloadPDF() {
-        const { jsPDF } = window.jspdf;
-        const doc = new jsPDF("p", "mm", "a4");
-        const cvElement = document.getElementById("cv-container");
- 
-        html2canvas(cvElement, { scale: 2 }).then((canvas) => {
-            const imgData = canvas.toDataURL("image/png");
-            const imgWidth = 210;
-            const pageHeight = 297;
-            const imgHeight = (canvas.height * imgWidth) / canvas.width; 
- 
-            let y = 0;
-            while (y < imgHeight) {
-                doc.addImage(imgData, "PNG", 0, -y, imgWidth, imgHeight);
-                y += pageHeight;
-                if (y < imgHeight) {
-                    doc.addPage();
+            html2canvas(cvElement, { scale: 2 }).then((canvas) => {
+                const imgData = canvas.toDataURL("image/png");
+                const imgWidth = 210;
+                const pageHeight = 297;
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+                let y = 0;
+                while (y < imgHeight) {
+                    doc.addImage(imgData, "PNG", 0, -y, imgWidth, imgHeight);
+                    y += pageHeight;
+                    if (y < imgHeight) {
+                        doc.addPage();
+                    }
                 }
-            }
-            doc.save("Mi_CV.pdf");
-        });
-    }
-</script>
- 
+                doc.save("Mi_CV.pdf");
+            });
+        }
+    </script>
+</head>
 
 <body class="bg-gray-100 font-sans">
     <div id="cv-container" class="max-w-4xl mx-auto mt-10 p-8 bg-white shadow-lg rounded-lg">
         <!-- Sección de Presentación -->
         <div class="text-center">
-            <img class="w-32 h-32 mx-auto rounded-full" src="https://i.postimg.cc/7LtYnZpB/foto.jpg" alt="Foto de perfil">
-            <h1 class="text-3xl font-bold mt-4">Jose Francisco Treviño Garcia</h1>
-            <p class="text-gray-600">Ingeniero en Mecatrtonica | Especialidad en Sistemas Mecatrónicos e industria 4.0</p>
+            <img class="w-32 h-32 mx-auto rounded-full border-4 border-blue-500" src="https://i.postimg.cc/7LtYnZpB/foto.jpg" alt="Foto de perfil">
+            <h1 class="text-4xl font-bold mt-4 text-blue-600">Jose Francisco Treviño Garcia</h1>
+            <p class="text-gray-600 text-lg">Ingeniero en Mecatrónica | Especialidad en Sistemas Mecatrónicos e Industria 4.0</p>
         </div>
         
         <!-- Perfil -->
         <section class="mt-6">
-            <h2 class="text-xl font-semibold border-b-2 pb-2">Perfil</h2>
-            <div class="mt-4">
-                <p class="text-gray-700">Soy una persona proactiva y apasionada por las nuevas tecnologías, con especial interés en la 
-                    automatización, sistemas de control y programación. Mi enfoque está en el aprendizaje continuo 
-                    y la aplicación de soluciones innovadoras que optimicen procesos. Me encanta trabajar en 
-                    proyectos que involucren el desarrollo y mejora de sistemas automatizados, aprovechando las 
-                    últimas herramientas tecnológicas</p>
-            </div>
+            <h2 class="text-2xl font-semibold border-b-2 pb-2 text-blue-600">Perfil</h2>
+            <p class="mt-4 text-gray-700">Soy una persona proactiva y apasionada por las nuevas tecnologías, con especial interés en la automatización, sistemas de control y programación. Mi enfoque está en el aprendizaje continuo y la aplicación de soluciones innovadoras que optimicen procesos. Me encanta trabajar en proyectos que involucren el desarrollo y mejora de sistemas automatizados, aprovechando las últimas herramientas tecnológicas.</p>
         </section>
 
         <!-- Educación -->
         <section class="mt-6">
-            <h2 class="text-xl font-semibold border-b-2 pb-2">Educación</h2>
+            <h2 class="text-2xl font-semibold border-b-2 pb-2 text-blue-600">Educación</h2>
             <div class="mt-4">
-                <h3 class="text-lg font-bold">Tecnologico de Colima</h3>
-                <p class="text-gray-500">Ingeniero en Mecatronica - 2025</p>
-                <p class="text-gray-700">Formación en automatización, robótica y control de sistemas,  
-                    con enfoque en el desarrollo de soluciones tecnológicas para la optimización de 
-                    procesos industriales.</p>
-
+                <h3 class="text-lg font-bold">Tecnológico de Colima</h3>
+                <p class="text-gray-500">Ingeniero en Mecatrónica - 2025</p>
+                <p class="text-gray-700">Formación en automatización, robótica y control de sistemas, con enfoque en el desarrollo de soluciones tecnológicas para la optimización de procesos industriales.</p>
             </div>
         </section>   
         
         <!-- Competencias -->
         <section class="mt-6">
-            <h2 class="text-xl font-semibold border-b-2 pb-2">Competencias</h2>
-            <div class="mt-4">
-                <p class="text-gray-700">Trabajo en equipo y habilidades de comunicación</p>
-                <p class="text-gray-700"> Diseño y control de sistemas 
-                    automatizados</p>
-                <p class="text-gray-700">Manejo de PLCs y sistemas de control 
-                    industrial</p>
-                <p class="text-gray-700">Experiencia en sensores</p>                     
-                <p class="text-gray-700">Programación en Python y C</p>
-                <p class="text-gray-700">Adaptabilidad y disposición para aprender 
-                    nuevas tecnologías</p>
-            </div>
+            <h2 class="text-2xl font-semibold border-b-2 pb-2 text-blue-600">Competencias</h2>
+            <ul class="mt-4 list-disc list-inside text-gray-700">
+                <li>Trabajo en equipo y habilidades de comunicación</li>
+                <li>Diseño y control de sistemas automatizados</li>
+                <li>Manejo de PLCs y sistemas de control industrial</li>
+                <li>Experiencia en sensores</li>
+                <li>Programación en Python y C</li>
+                <li>Adaptabilidad y disposición para aprender nuevas tecnologías</li>
+            </ul>
         </section>  
 
         <!-- Experiencia -->
         <section class="mt-6">
-            <h2 class="text-xl font-semibold border-b-2 pb-2">Experiencia Laboral</h2>
+            <h2 class="text-2xl font-semibold border-b-2 pb-2 text-blue-600">Experiencia Laboral</h2>
             <div class="mt-4">
                 <h3 class="text-lg font-bold">Petroil</h3>
                 <p class="text-gray-500">Practicante - 03/02/2025</p>
-                <p class="text-gray-700">Instalación de dispensarios conforme a los requerimientos del cliente, 
-                    verificando conexiones eléctricas, hidráulicas y de control, y configurando parámetros 
-                    para su correcto funcionamiento. Mantenimiento preventivo y correctivo, incluyendo revisión 
-                    de componentes, limpieza, diagnóstico y reparación de fallas. Calibración de dispensarios y 
-                    pipas de diésel con instrumentos certificados para garantizar precisión en el suministro y 
-                    cumplimiento de normativas.</p>
-                <h3 class="text-lg font-bold">Centro de Innovacion y Manufactura (CIM)</h3>
+                <p class="text-gray-700">Instalación de dispensarios conforme a los requerimientos del cliente, verificando conexiones eléctricas, hidráulicas y de control, y configurando parámetros para su correcto funcionamiento. Mantenimiento preventivo y correctivo, incluyendo revisión de componentes, limpieza, diagnóstico y reparación de fallas. Calibración de dispensarios y pipas de diésel con instrumentos certificados para garantizar precisión en el suministro y cumplimiento de normativas.</p>
+                
+                <h3 class="text-lg font-bold mt-4">Centro de Innovación y Manufactura (CIM)</h3>
                 <p class="text-gray-500">Prestamista social - 14/02/2024</p>
-                <p class="text-gray-700">Encargado de la organización y mantenimiento del taller para 
-                    garantizar un entorno de trabajo eficiente y seguro. Gestión del préstamo de 
-                    herramientas a estudiantes, supervisando su uso adecuado, así como la implementación 
-                    de medidas para el control y resguardo del equipo, asegurando su disponibilidad y buen estado.</p>
+                <p class="text-gray-700">Encargado de la organización y mantenimiento del taller para garantizar un entorno de trabajo eficiente y seguro. Gestión del préstamo de herramientas a estudiantes, supervisando su uso adecuado, así como la implementación de medidas para el control y resguardo del equipo, asegurando su disponibilidad y buen estado.</p>
             </div>
         </section>
         
         <!-- Habilidades -->
         <section class="mt-6">
-            <h2 class="text-xl font-semibold border-b-2 pb-2">Habilidades</h2>
+            <h2 class="text-2xl font-semibold border-b-2 pb-2 text-blue-600">Habilidades</h2>
             <div class="mt-4 flex flex-wrap gap-2">
                 <span class="px-3 py-1 bg-blue-500 text-white rounded-full">HTML</span>
                 <span class="px-3 py-1 bg-blue-500 text-white rounded-full">SQL</span>
@@ -119,89 +98,72 @@
             </div>
         </section>
 
-
-
         <!-- Proyectos -->
         <section class="mt-6">
-            <h2 class="text-xl font-semibold border-b-2 pb-2">Proyectos</h2>
+            <h2 class="text-2xl font-semibold border-b-2 pb-2 text-blue-600">Proyectos</h2>
             <div class="mt-4">
-                <h3 class="text-lg font-bold"> Brazo Robótico para Clasificación de Tamaño de Cajas</h3>
-                <p class="text-gray-500"> Diseño y programación de un brazo robótico controlado por microcontroladores para 
-                    clasificar cajas según su tamaño, utilizando sensores para identificar dimensiones y 
-                    automatizar el proceso de clasificación</p>
-                <h3 class="text-lg font-bold"> Sistema de Seguridad para Cocina con Emulación Física</h3>
-                <p class="text-gray-500">Desarrollo de un sistema de seguridad para una cocina, empleando tres sensores (de gas, 
-                    temperatura y humo), una alarma, y actuadores que responden automáticamente en caso 
-                    de emergencia para mitigar riesgos</p>
-                <h3 class="text-lg font-bold"> Control de Temperatura en una Incubadora con Sistema de Iluminación</h3>
-                <p class="text-gray-500">Implementación de un sistema de control de temperatura para una incubadora, utilizando 
-                    sensores de temperatura y un foco que regula la luz y el calor para mantener condiciones 
-                    óptimas.</p>
-                <h3 class="text-lg font-bold"> Automatización de Estación Neumática con PLCs</h3>
-                <p class="text-gray-500"> Proyecto en desarrollo enfocado en la automatización de una estación neumática 
-                        utilizando controladores lógicos programables (PLCs) para optimizar el control y 
-                        funcionamiento de la estación.</p>
-                <h3 class="text-lg font-bold"> Estandarización en la Instalación de Dispensarios</h3>
-                <p class="text-gray-500"> El proyecto consistió en la creación e implementación de un proceso estandarizado 
-                    para la instalación de dispensarios, logrando una mayor eficiencia, calidad y cumplimiento de normativas. 
-                    Se definieron procedimientos claros, se seleccionaron materiales adecuados y se capacitó al personal para 
-                    asegurar instalaciones consistentes y sin errores, lo que resultó en una mejora significativa en la satisfacción 
-                    de los usuarios y la sostenibilidad de la red.</p>
-                <h3 class="text-lg font-bold"> Monitoreo remoto de condiciones ambientales en plantas</h3>
-                <p class="text-gray-500"> Desarrollé un sistema de monitoreo remoto para cuatro plantas, midiendo humedad, 
-                    temperatura e índice de calor. Integré los datos en una interfaz gráfica interactiva utilizando PySide6, 
-                    permitiendo una visualización en tiempo real y una gestión eficiente de las condiciones ambientales.</p>
-                <h3 class="text-lg font-bold"> Diseño y desarrollo de silla asistida con accionadores</h3>
-                <p class="text-gray-500"> Diseñé y construí una silla equipada con accionadores controlados mediante una botonera integrada. 
-                    El sistema permite elevar el asiento para facilitar el proceso de levantarse, brindando asistencia a personas con 
-                    movilidad reducida y reduciendo el esfuerzo necesario para incorporarse de manera segura y cómoda.</p>
+                <h3 class="text-lg font-bold">Brazo Robótico para Clasificación de Tamaño de Cajas</h3>
+                <p class="text-gray-500">Diseño y programación de un brazo robótico controlado por microcontroladores para clasificar cajas según su tamaño, utilizando sensores para identificar dimensiones y automatizar el proceso de clasificación.</p>
                 
-
+                <h3 class="text-lg font-bold mt-4">Sistema de Seguridad para Cocina con Emulación Física</h3>
+                <p class="text-gray-500">Desarrollo de un sistema de seguridad para una cocina, empleando tres sensores (de gas, temperatura y humo), una alarma, y actuadores que responden automáticamente en caso de emergencia para mitigar riesgos.</p>
                 
+                <h3 class="text-lg font-bold mt-4">Control de Temperatura en una Incubadora con Sistema de Iluminación</h3>
+                <p class="text-gray-500">Implementación de un sistema de control de temperatura para una incubadora, utilizando sensores de temperatura y un foco que regula la luz y el calor para mantener condiciones óptimas.</p>
+                
+                <h3 class="text-lg font-bold mt-4">Automatización de Estación Neumática con PLCs</h3>
+                <p class="text-gray-500">Proyecto en desarrollo enfocado en la automatización de una estación neumática utilizando controladores lógicos programables (PLCs) para optimizar el control y funcionamiento de la estación.</p>
+                
+                <h3 class="text-lg font-bold mt-4">Estandarización en la Instalación de Dispensarios</h3>
+                <p class="text-gray-500">El proyecto consistió en la creación e implementación de un proceso estandarizado para la instalación de dispensarios, logrando una mayor eficiencia, calidad y cumplimiento de normativas.</p>
+                
+                <h3 class="text-lg font-bold mt-4">Monitoreo remoto de condiciones ambientales en plantas</h3>
+                <p class="text-gray-500">Desarrollé un sistema de monitoreo remoto para cuatro plantas, midiendo humedad, temperatura e índice de calor.</p>
+                
+                <h3 class="text-lg font-bold mt-4">Diseño y desarrollo de silla asistida con accionadores</h3>
+                <p class="text-gray-500">Diseñé y construí una silla equipada con accionadores controlados mediante una botonera integrada.</p>
             </div>
         </section>
 
         <!-- Certificados -->
         <section class="mt-6">
-            <h2 class="text-xl font-semibold border-b-2 pb-2">Certificados</h2>
-            
-            <div class="mt-4 flex items-center gap-4 bg-gray-50 p-4 rounded-lg shadow">
-                <img class="w-48 h-auto rounded-lg" src="https://i.postimg.cc/VkSd5ZBs/Certificado1.jpg" alt="Certificado Python">
-                <div>
-                    <h3 class="text-lg font-bold">Curso Práctico de Qt/PySide: Interfaces Gráficas con Python</h3>
-                    <p class="text-gray-500">Udemy - 2024</p>
-                    <p class="text-gray-700">Utilizar y dominar el módulo de interfaces más potente para Python creando multitud de proyectos gráficos.</p>
+            <h2 class="text-2xl font-semibold border-b-2 pb-2 text-blue-600">Certificados</h2>
+            <div class="mt-4">
+                <div class="flex items-center gap-4 bg-gray-50 p-4 rounded-lg shadow mb-4">
+                    <img class="w-48 h-auto rounded-lg" src="https://i.postimg.cc/VkSd5ZBs/Certificado1.jpg" alt="Certificado Python">
+                    <div>
+                        <h3 class="text-lg font-bold">Curso Práctico de Qt/PySide: Interfaces Gráficas con Python</h3>
+                        <p class="text-gray-500">Udemy - 2024</p>
+                        <p class="text-gray-700">Utilizar y dominar el módulo de interfaces más potente para Python creando multitud de proyectos gráficos.</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="mt-4 flex items-center gap-4 bg-gray-50 p-4 rounded-lg shadow">
-                <img class="w-48 h-auto rounded-lg" src="https://i.postimg.cc/MKnWYMcd/Certificado2.jpg" alt="Certificado Python">
-                <div>
-                    <h3 class="text-lg font-bold">Python sin fronteras: HTML, CSS, Flask y MySQL</h3>
-                    <p class="text-gray-500">Udemy - 2024</p>
-                    <p class="text-gray-700">Este curso es la puerta de entrada al mundo de la programación con Python. Aprenderás desde lo más básico hasta construir aplicaciones completas en frontend y backend. A lo largo del curso, dominarás tecnologías clave como HTML, CSS, MySQL, Flask y APIs RESTful, además de conceptos fundamentales de programación como variables, operadores, control de flujo, bucles y funciones.s.</p>
+                <div class="flex items-center gap-4 bg-gray-50 p-4 rounded-lg shadow mb-4">
+                    <img class="w-48 h-auto rounded-lg" src="https://i.postimg.cc/MKnWYMcd/Certificado2.jpg" alt="Certificado Python">
+                    <div>
+                        <h3 class="text-lg font-bold">Python sin fronteras: HTML, CSS, Flask y MySQL</h3>
+                        <p class="text-gray-500">Udemy - 2024</p>
+                        <p class="text-gray-700">Este curso es la puerta de entrada al mundo de la programación con Python.</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="mt-4 flex items-center gap-4 bg-gray-50 p-4 rounded-lg shadow">
-                <img class="w-48 h-auto rounded-lg" src="https://i.postimg.cc/ZKvSdGgQ/Certificado3-page-0001.jpg" alt="Certificado Driver">
-                <div>
-                    <h3 class="text-lg font-bold">Desarrollo de Drivers con STM32</h3>
-                    <p class="text-gray-500">Elio Zepeda Sanchez - 2024</p>
-                    <p class="text-gray-700">En este curso aprenderás a desarrollar drivers para microcontroladores STM32, una de las plataformas más populares en sistemas embebidos. A través de una serie de lecciones prácticas, dominarás la creación de drivers de bajo nivel para interactuar con hardware específico, como sensores, actuadores y otros periféricos..</p>
+                <div class="flex items-center gap-4 bg-gray-50 p-4 rounded-lg shadow mb-4">
+                    <img class="w-48 h-auto rounded-lg" src="https://i.postimg.cc/ZKvSdGgQ/Certificado3-page-0001.jpg" alt="Certificado Driver">
+                    <div>
+                        <h3 class="text-lg font-bold">Desarrollo de Drivers con STM32</h3>
+                        <p class="text-gray-500">Elio Zepeda Sanchez - 2024</p>
+                        <p class="text-gray-700">En este curso aprenderás a desarrollar drivers para microcontroladores STM32.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        
         <!-- Contacto -->
         <section class="mt-6 text-center">
-            <h2 class="text-xl font-semibold border-b-2 pb-2">Contacto</h2>
-            <p class="mt-4 text-gray-700">Correo: <a href="trevi2234@hotmail.com" class="text-blue-500">trevi2234@hotmail.com</a></p>
-            <p class="mt-2 text-gray-700">Telefono/Whatsapp: <a href="#" class="text-blue-500">3121432958</a></p>
+            <h2 class="text-2xl font-semibold border-b-2 pb-2 text-blue-600">Contacto</h2>
+            <p class="mt-4 text-gray-700">Correo: <a href="mailto:trevi2234@hotmail.com" class="text-blue-500">trevi2234@hotmail.com</a></p>
+            <p class="mt-2 text-gray-700">Teléfono/Whatsapp: <a href="tel:3121432958" class="text-blue-500">3121432958</a></p>
         </section>
-
-        
     </div>
 </body>
 </html>
