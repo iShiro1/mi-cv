@@ -8,22 +8,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
-        function downloadPDF() {
-            // Usamos html2canvas para capturar la sección del CV
-            html2canvas(document.getElementById('cv-container')).then((canvas) => {
-                // Creamos un objeto jsPDF
-                const pdf = new jsPDF();
-                
-                // Convertimos el canvas a una imagen en base64
-                const imgData = canvas.toDataURL('image/jpeg');
-                
-                // Agregamos la imagen al PDF (x, y, ancho, alto)
-                pdf.addImage(imgData, 'JPEG', 10, 10, 180, 240);
-                
-                // Guardamos el PDF con el nombre que elijas
-                pdf.save('mi_cv_online.pdf');
-            });
-        }
+    function downloadPDF() {
+        // Usamos html2canvas para capturar la sección del CV
+        html2canvas(document.getElementById('cv-container')).then((canvas) => {
+            // Creamos un objeto jsPDF
+            const pdf = new jsPDF();
+            
+            // Convertimos el canvas a una imagen en base64
+            const imgData = canvas.toDataURL('image/jpeg');
+            
+            // Agregamos la imagen al PDF (x, y, ancho, alto)
+            pdf.addImage(imgData, 'JPEG', 10, 10, 180, 240);
+            
+            // Guardamos el PDF con el nombre que elijas
+            pdf.save('mi_cv_online.pdf');
+        }).catch((error) => {
+            console.error('Error al generar el PDF:', error);
+        });
+    }
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
