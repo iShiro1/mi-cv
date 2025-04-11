@@ -306,12 +306,11 @@
                 pdf.save('cv-jose-francisco.pdf');
             });
         }
-            
+        
         function toggleModal() {
             const modal = document.getElementById('contact-modal');
-            modal.classList.toggle('hidden');
+            modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
         }
-
         window.onscroll = function() {
             const button = document.getElementById('scroll-to-top');
             if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
