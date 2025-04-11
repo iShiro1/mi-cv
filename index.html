@@ -14,9 +14,12 @@
             const cvElement = document.getElementById("cv-container");
 
             html2canvas(cvElement, { 
-                scale: 3,   // Aumentamos la escala para mejorar la calidad
+                scale: 3,   // Escala más alta para mejorar la calidad
                 logging: true, // Añadido para obtener logs en consola
-                useCORS: true  // Permite la carga de imágenes externas (si las hay)
+                useCORS: true, // Permite la carga de imágenes externas (si las hay)
+                backgroundColor: "#ffffff", // Aseguramos que el fondo sea blanco
+                letterRendering: true, // Mejora el renderizado de las fuentes
+                allowTaint: true  // Permite que las imágenes de fondo se rendericen correctamente
             }).then((canvas) => {
                 const imgData = canvas.toDataURL("image/png");
                 const imgWidth = 210; // A4: 210mm de ancho
