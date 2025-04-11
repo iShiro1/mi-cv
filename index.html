@@ -36,10 +36,9 @@
         body {
             font-family: 'Roboto', sans-serif;
             background-image: url('https://i.postimg.cc/Y9JqchT2/buenaa.jpg');
-            background-size: contain;
-            background-position: center; /* Centra la imagen */
-            
-            
+            background-size: cover;
+            background-position: center;
+            color: #333;
         }
         .fade-in {
             animation: fadeIn 0.5s ease-in-out;
@@ -55,47 +54,71 @@
             }
         }
         .profile-image {
-
-            transition: transform 0.3s ease; /* Suaviza la transición */
-
+            transition: transform 0.3s ease;
         }
-
         .profile-image:hover {
-
-            transform: scale(1.1); /* Aumenta el tamaño al pasar el mouse */
-
+            transform: scale(1.1);
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2563eb;
+        }
+        .card {
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            background-color: white;
+            margin-top: 20px;
+        }
+        .card-header {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #4B8BBE;
+        }
+        .card-body {
+            font-size: 1rem;
+            color: #555;
+        }
+        .skills-tag {
+            padding: 8px 12px;
+            background-color: #4B8BBE;
+            color: white;
+            border-radius: 12px;
+            font-weight: 500;
         }
     </style>
 </head>
 
-<body class="bg-gray-100 font-sans">
+<body class="bg-gray-100">
     <div id="cv-container" class="max-w-4xl mx-auto mt-10 p-8 bg-white shadow-lg rounded-lg fade-in">
         <!-- Sección de Presentación -->
         <div class="text-center">
-            <img class="w-32 h-32 mx-auto rounded-full border-4 border-blue-500" src="https://i.postimg.cc/7LtYnZpB/foto.jpg" alt="Foto de perfil">
+            <img class="w-40 h-40 mx-auto rounded-full border-4 border-blue-500 profile-image" src="https://i.postimg.cc/7LtYnZpB/foto.jpg" alt="Foto de perfil">
             <h1 class="text-4xl font-bold mt-4 text-blue-600">Jose Francisco Treviño Garcia</h1>
-            <p class="text-gray-600 text-lg">Ingeniero en Mecatrónica | Especialidad en Sistemas Mecatrónicos e Industria 4.0</p>
+            <p class="text-lg text-gray-600">Ingeniero en Mecatrónica | Especialidad en Sistemas Mecatrónicos e Industria 4.0</p>
         </div>
         
         <!-- Perfil -->
-        <section class="mt-6 fade-in">
-            <h2 class="text-2xl font-semibold border-b-2 pb-2 text-blue-600">Perfil</h2>
-            <p class="mt-4 text-gray-700">Soy una persona proactiva y apasionada por las nuevas tecnologías, con especial interés en la automatización, sistemas de control y programación. Mi enfoque está en el aprendizaje continuo y la aplicación de soluciones innovadoras que optimicen procesos. Me encanta trabajar en proyectos que involucren el desarrollo y mejora de sistemas automatizados, aprovechando las últimas herramientas tecnológicas.</p>
+        <section class="card fade-in">
+            <h2 class="section-title">Perfil</h2>
+            <p class="mt-4">Soy una persona proactiva y apasionada por las nuevas tecnologías, con especial interés en la automatización, sistemas de control y programación. Mi enfoque está en el aprendizaje continuo y la aplicación de soluciones innovadoras que optimicen procesos. Me encanta trabajar en proyectos que involucren el desarrollo y mejora de sistemas automatizados, aprovechando las últimas herramientas tecnológicas.</p>
         </section>
 
         <!-- Educación -->
-        <section class="mt-6 fade-in">
-            <h2 class="text-2xl font-semibold border-b-2 pb-2 text-blue-600">Educación</h2>
-            <div class="mt-4">
-                <h3 class="text-lg font-bold">Tecnológico de Colima</h3>
+        <section class="card fade-in">
+            <h2 class="section-title">Educación</h2>
+            <div class="card-body">
+                <h3 class="card-header">Tecnológico de Colima</h3>
                 <p class="text-gray-500">Ingeniero en Mecatrónica - 2025</p>
-                <p class="text-gray-700">Formación en automatización, robótica y control de sistemas, con enfoque en el desarrollo de soluciones tecnológicas para la optimización de procesos industriales.</p>
+                <p>Formación en automatización, robótica y control de sistemas, con enfoque en el desarrollo de soluciones tecnológicas para la optimización de procesos industriales.</p>
             </div>
         </section>   
-        
+
         <!-- Competencias -->
-        <section class="mt-6 fade-in">
-            <h2 class="text-2xl font-semibold border-b-2 pb-2 text-blue-600">Competencias</h2>
+        <section class="card fade-in">
+            <h2 class="section-title">Competencias</h2>
             <ul class="mt-4 list-disc list-inside text-gray-700">
                 <li>Trabajo en equipo y habilidades de comunicación</li>
                 <li>Diseño y control de sistemas automatizados</li>
@@ -104,106 +127,38 @@
                 <li>Programación en Python y C</li>
                 <li>Adaptabilidad y disposición para aprender nuevas tecnologías</li>
             </ul>
-        </section>  
+        </section>
 
         <!-- Experiencia -->
-        <section class="mt-6 fade-in">
-            <h2 class="text-2xl font-semibold border-b-2 pb-2 text-blue-600">Experiencia Laboral</h2>
-            <div class="mt-4">
-                <h3 class="text-lg font-bold">Petroil</h3>
+        <section class="card fade-in">
+            <h2 class="section-title">Experiencia Laboral</h2>
+            <div class="card-body">
+                <h3 class="card-header">Petroil</h3>
                 <p class="text-gray-500">Practicante - 03/02/2025</p>
-                <p class="text-gray-700">Instalación de dispensarios conforme a los requerimientos del cliente, verificando conexiones eléctricas, hidráulicas y de control, y configurando parámetros para su correcto funcionamiento. Mantenimiento preventivo y correctivo, incluyendo revisión de componentes, limpieza, diagnóstico y reparación de fallas. Calibración de dispensarios y pipas de diésel con instrumentos certificados para garantizar precisión en el suministro y cumplimiento de normativas.</p>
+                <p>Instalación de dispensarios conforme a los requerimientos del cliente, verificando conexiones eléctricas, hidráulicas y de control, y configurando parámetros para su correcto funcionamiento.</p>
                 
-                <h3 class="text-lg font-bold mt-4">Centro de Innovación y Manufactura (CIM)</h3>
+                <h3 class="card-header mt-4">Centro de Innovación y Manufactura (CIM)</h3>
                 <p class="text-gray-500">Prestamista social - 14/02/2024</p>
-                <p class="text-gray-700">Encargado de la organización y mantenimiento del taller para garantizar un entorno de trabajo eficiente y seguro. Gestión del préstamo de herramientas a estudiantes, supervisando su uso adecuado, así como la implementación de medidas para el control y resguardo del equipo, asegurando su disponibilidad y buen estado.</p>
+                <p>Encargado de la organización y mantenimiento del taller para garantizar un entorno de trabajo eficiente y seguro.</p>
             </div>
         </section>
-        
+
         <!-- Habilidades -->
-        <section class="mt-6 fade-in">
-            <h2 class="text-2xl font-semibold border-b-2 pb-2 text-blue-600">Habilidades</h2>
-            <div class="mt-4 flex flex-wrap gap-2">
-                <span class="px-3 py-1 bg-blue-500 text-white rounded-full">HTML</span>
-                <span class="px-3 py-1 bg-blue-500 text-white rounded-full">SQL</span>
-                <span class="px-3 py-1 bg-blue-500 text-white rounded-full">Python</span>
-                <span class="px-3 py-1 bg-blue-500 text-white rounded-full">Pyside</span>
-                <span class="px-3 py-1 bg-blue-500 text-white rounded-full">C</span>
-                <span class="px-3 py-1 bg-blue-500 text-white rounded-full">Embedded</span>
-            </div>
-        </section>
-
-        <!-- Proyectos -->
-        <section class="mt-6 fade-in">
-            <h2 class="text-2xl font-semibold border-b-2 pb-2 text-blue-600">Proyectos</h2>
-            <div class="mt-4">
-                <h3 class="text-lg font-bold">Brazo Robótico para Clasificación de Tamaño de Cajas</h3>
-                <p class="text-gray-500">Diseño y programación de un brazo robótico controlado por microcontroladores para clasificar cajas según su tamaño, utilizando sensores para identificar dimensiones y automatizar el proceso de clasificación.</p>
-                
-                <h3 class="text-lg font-bold mt-4">Sistema de Seguridad para Cocina con Emulación Física</h3>
-                <p class="text-gray-500">Desarrollo de un sistema de seguridad para una cocina, empleando tres sensores (de gas, temperatura y humo), una alarma, y actuadores que responden automáticamente en caso de emergencia para mitigar riesgos.</p>
-                
-                <h3 class="text-lg font-bold mt-4">Control de Temperatura en una Incubadora con Sistema de Iluminación</h3>
-                <p class="text-gray-500">Implementación de un sistema de control de temperatura para una incubadora, utilizando sensores de temperatura y un foco que regula la luz y el calor para mantener condiciones óptimas.</p>
-                
-                <h3 class="text-lg font-bold mt-4">Automatización de Estación Neumática con PLCs</h3>
-                <p class="text-gray-500">Proyecto de automatización de una estación neumática utilizando controladores lógicos programables (PLCs) para optimizar el control y funcionamiento de la estación.</p>
-                
-                <h3 class="text-lg font-bold mt-4">Estandarización en la Instalación de Dispensarios</h3>
-                <p class="text-gray-500">El proyecto consistió en la creación e implementación de un proceso estandarizado 
-                    para la instalación de dispensarios, logrando una mayor eficiencia, calidad y cumplimiento de normativas. 
-                    Se definieron procedimientos claros, se seleccionaron materiales adecuados y se capacitó al personal para 
-                    asegurar instalaciones consistentes y sin errores, lo que resultó en una mejora significativa en la satisfacción 
-                    de los usuarios y la sostenibilidad de la red.</p>
-                
-                <h3 class="text-lg font-bold mt-4">Monitoreo remoto de condiciones ambientales en plantas</h3>
-                <p class="text-gray-500"> Se desarrollo un sistema de monitoreo remoto para cuatro plantas, midiendo humedad, 
-                    temperatura e índice de calor. Integré los datos en una interfaz gráfica interactiva utilizando PySide6, 
-                    permitiendo una visualización en tiempo real y una gestión eficiente de las condiciones ambientales.</p>
-                
-                <h3 class="text-lg font-bold mt-4">Diseño y desarrollo de silla asistida con accionadores</h3>
-                <p class="text-gray-500">Se diseño y construllo una silla equipada con accionadores controlados mediante una botonera integrada. 
-                    El sistema permite elevar el asiento para facilitar el proceso de levantarse, brindando asistencia a personas con 
-                    movilidad reducida y reduciendo el esfuerzo necesario para incorporarse de manera segura y cómoda.</p>
-            </div>
-        </section>
-
-        <!-- Certificados -->
-        <section class="mt-6 fade-in">
-            <h2 class="text-2xl font-semibold border-b-2 pb-2 text-blue-600">Certificados</h2>
-            <div class="mt-4">
-                <div class="flex items-center gap-4 bg-gray-50 p-4 rounded-lg shadow mb-4">
-                    <img class="w-48 h-auto rounded-lg" src="https://i.postimg.cc/VkSd5ZBs/Certificado1.jpg" alt="Certificado Python">
-                    <div>
-                        <h3 class="text-lg font-bold">Curso Práctico de Qt/PySide: Interfaces Gráficas con Python</h3>
-                        <p class="text-gray-500">Udemy - 2024</p>
-                        <p class="text-gray-700">múltiples proyectos gráficos, desarrollarás aplicaciones interactivas con una interfaz visual atractiva, mejorando la experiencia del usuario y adquiriendo habilidades clave en desarrollo de software.</p>
-                    </div>
-                </div>
-
-                <div class="flex items-center gap-4 bg-gray-50 p-4 rounded-lg shadow mb-4">
-                    <img class="w-48 h-auto rounded-lg" src="https://i.postimg.cc/MKnWYMcd/Certificado2.jpg" alt="Certificado Python">
-                    <div>
-                        <h3 class="text-lg font-bold">Python sin fronteras: HTML, CSS, Flask y MySQL</h3>
-                        <p class="text-gray-500">Udemy - 2024</p>
-                        <p class="text-gray-700">Este curso es una introducción completa a la programación con Python. Desde los conceptos básicos hasta la creación de aplicaciones completas en frontend y backend, aprenderás tecnologías esenciales como HTML, CSS, MySQL, Flask y APIs RESTful, además de principios fundamentales de programación.</p>
-                    </div>
-                </div>
-
-                <div class="flex items-center gap-4 bg-gray-50 p-4 rounded-lg shadow mb-4">
-                    <img class="w-48 h-auto rounded-lg" src="https://i.postimg.cc/ZKvSdGgQ/Certificado3-page-0001.jpg" alt="Certificado Driver">
-                    <div>
-                        <h3 class="text-lg font-bold">Desarrollo de Drivers con STM32</h3>
-                        <p class="text-gray-500">Elio Zepeda Sanchez - 2024</p>
-                        <p class="text-gray-700">Domina el desarrollo de drivers para microcontroladores STM32, una plataforma ampliamente utilizada en sistemas embebidos. A través de lecciones prácticas, aprenderás a programar drivers de bajo nivel para interactuar con hardware específico, como sensores y actuadores, adquiriendo experiencia en programación de sistemas.</p>
-                    </div>
-                </div>
+        <section class="card fade-in">
+            <h2 class="section-title">Habilidades</h2>
+            <div class="flex flex-wrap gap-2">
+                <span class="skills-tag">HTML</span>
+                <span class="skills-tag">SQL</span>
+                <span class="skills-tag">Python</span>
+                <span class="skills-tag">Pyside</span>
+                <span class="skills-tag">C</span>
+                <span class="skills-tag">Embedded</span>
             </div>
         </section>
 
         <!-- Contacto -->
-        <section class="mt-6 text-center fade-in">
-            <h2 class="text-2xl font-semibold border-b-2 pb-2 text-blue-600">Contacto</h2>
+        <section class="card fade-in text-center">
+            <h2 class="section-title">Contacto</h2>
             <p class="mt-4 text-gray-700">Correo: <a href="mailto:trevi2234@hotmail.com" class="text-blue-500">trevi2234@hotmail.com</a></p>
             <p class="mt-2 text-gray-700">Whatsapp: <a href="Wapp:3121432958" class="text-blue-500">3121432958</a></p>
             <p class="mt-2 text-gray-700">Teléfono: <a href="tel:3337181916" class="text-blue-500">3337181916</a></p>
