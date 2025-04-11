@@ -237,19 +237,19 @@
     </div>
     <script>
         function downloadPDF() {
-            const { jsPDF } = window.jspdf; // Asegúrate de que la biblioteca se carga desde `window.jspdf`
-            // Usamos html2canvas para capturar la sección del CV
-            html2canvas(document.getElementById('cv-container')).then((canvas) => {
-                // Creamos un objeto jsPDF
-                const pdf = new jsPDF();
-                
-                // Convertimos el canvas a una imagen
+            const { jsPDF } = window.jspdf;  // Cargamos jsPDF
+            html2canvas(document.getElementById('cv-container'), { scale: 2 }).then((canvas) => {
+                const pdf = new jsPDF('p', 'mm', 'a4');  // Usamos A4 para asegurar el tamaño correcto
                 const imgData = canvas.toDataURL('image/png');
-                
-                // Agregamos la imagen al PDF
-                pdf.addImage(imgData, 'PNG', 10, 10);
-                
-                // Guardamos el PDF
+
+                // Establecer márgenes y agregar imagen al PDF
+                const margin = 10;
+                const pageWidth = pdf.internal.pageSize.getWidth();
+                const pageHeight = pdf.internal.pageSize.getHeight();
+                const imgWidth = pageWidth - 2 * margin;
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+                pdf.addImage(imgData, 'PNG', margin, margin, imgWidth, imgHeight);
                 pdf.save('cv-jose-francisco.pdf');
             });
         }
