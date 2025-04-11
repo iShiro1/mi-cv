@@ -289,6 +289,10 @@
     <button id="scroll-to-top" onclick="scrollToTop()">↑</button>
     
     <script>
+        
+        // Inicializa EmailJS con tu USER ID
+        emailjs.init('service_uijzq54');  // Reemplaza 'YOUR_USER_ID' con tu User ID de EmailJS        
+        
         function downloadPDF() {
             const { jsPDF } = window.jspdf;  // Cargamos jsPDF
             html2canvas(document.getElementById('cv-container'), { scale: 2 }).then((canvas) => {
@@ -323,6 +327,31 @@
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+        
+        // Función para enviar el formulario por email usando EmailJS
+        document.getElementById("contact-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Evita que el formulario se envíe de manera tradicional
+
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+
+            const templateParams = {
+                from_name: name,
+                from_email: email,
+                message: message
+            };
+
+            emailjs.send('service_uijzq54', 'YOUR_TEMPLATE_ID', templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    alert("Tu mensaje ha sido enviado.");
+                    toggleModal();  // Cierra el modal después de enviar el correo
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    alert("Hubo un problema al enviar tu mensaje. Intenta de nuevo.");
+                });
+        });
         
     </script>
 </body>
