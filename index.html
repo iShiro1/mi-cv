@@ -237,6 +237,7 @@
     </div>
     <script>
         function downloadPDF() {
+            const { jsPDF } = window.jspdf; // Asegúrate de que la biblioteca se carga desde `window.jspdf`
             // Usamos html2canvas para capturar la sección del CV
             html2canvas(document.getElementById('cv-container')).then((canvas) => {
                 // Creamos un objeto jsPDF
