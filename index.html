@@ -9,37 +9,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
         function downloadPDF() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF("p", "mm", "a4");
-            const cvElement = document.getElementById("cv-container");
-
-            html2canvas(cvElement, { 
-                scale: 3,   // Escala más alta para mejorar la calidad
-                logging: true, // Añadido para obtener logs en consola
-                useCORS: true, // Permite la carga de imágenes externas (si las hay)
-                backgroundColor: "#ffffff", // Aseguramos que el fondo sea blanco
-                letterRendering: true, // Mejora el renderizado de las fuentes
-                allowTaint: true  // Permite que las imágenes de fondo se rendericen correctamente
-            }).then((canvas) => {
-                const imgData = canvas.toDataURL("image/png");
-                const imgWidth = 210; // A4: 210mm de ancho
-                const pageHeight = 297; // A4: 297mm de alto
-                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+            // Usamos html2canvas para capturar la sección del CV
+            html2canvas(document.getElementById('cv-container')).then((canvas) => {
+                // Creamos un objeto jsPDF
+                const pdf = new jsPDF();
                 
-                let y = 0;
-                // Dividimos la captura en partes para mejorar la calidad
-                while (y < imgHeight) {
-                    doc.addImage(imgData, "PNG", 0, y, imgWidth, pageHeight);
-                    y += pageHeight;
-                    if (y < imgHeight) {
-                        doc.addPage();
-                    }
-                }
-
-                // Guardamos el archivo PDF
-                doc.save("Mi_CV.pdf");
-            }).catch((error) => {
-                console.error("Error al generar el PDF:", error);
+                // Convertimos el canvas a una imagen en base64
+                const imgData = canvas.toDataURL('image/jpeg');
+                
+                // Agregamos la imagen al PDF (x, y, ancho, alto)
+                pdf.addImage(imgData, 'JPEG', 10, 10, 180, 240);
+                
+                // Guardamos el PDF con el nombre que elijas
+                pdf.save('mi_cv_online.pdf');
             });
         }
     </script>
