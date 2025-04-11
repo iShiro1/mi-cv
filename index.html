@@ -14,15 +14,15 @@
             const cvElement = document.getElementById("cv-container");
 
             html2canvas(cvElement, { 
-                scale: 2,
-                logging: true, // Añadido para obtener logs en consola
+                scale: 3,   // Usamos un scale más alto para obtener mayor calidad en la captura
+                logging: true, // Añadido para obtener logs de la ejecución en consola
                 useCORS: true  // Permite la carga de imágenes externas (si las hay)
             }).then((canvas) => {
                 const imgData = canvas.toDataURL("image/png");
                 const imgWidth = 210; // A4: 210mm de ancho
                 const pageHeight = 297; // A4: 297mm de alto
                 const imgHeight = (canvas.height * imgWidth) / canvas.width;
-                
+
                 let y = 0;
                 while (y < imgHeight) {
                     doc.addImage(imgData, "PNG", 0, y, imgWidth, imgHeight);
