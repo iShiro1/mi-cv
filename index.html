@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
         body {
@@ -291,7 +292,7 @@
     <script>
         
         // Inicializa EmailJS con tu USER ID
-        emailjs.init('service_uijzq54');  // Reemplaza 'YOUR_USER_ID' con tu User ID de EmailJS        
+        emailjs.init('203cKN4iBhlAWXM5h');  // Reemplaza 'YOUR_USER_ID' con tu User ID de EmailJS        
         
         function downloadPDF() {
             const { jsPDF } = window.jspdf;  // Cargamos jsPDF
@@ -342,7 +343,7 @@
                 message: message
             };
 
-            emailjs.send('service_uijzq54', 'YOUR_TEMPLATE_ID', templateParams)
+            emailjs.send('service_uijzq54', 'template_f6td6rb', templateParams)
                 .then(function(response) {
                     console.log('SUCCESS!', response.status, response.text);
                     alert("Tu mensaje ha sido enviado.");
